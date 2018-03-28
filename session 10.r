@@ -62,3 +62,34 @@ breaks=str_locate(emails,pattern = "\n\n")
 header=str_sub(emails[1:200],start=1,end=breaks[,1])
 bodies=str_sub(emails,start=breaks[,2])
 cat(bodies[3])
+
+
+###second lab
+#1.
+fruit=c("apple","banana","pear","pinapple")
+
+#2. detects if the pattern is found
+str_detect(fruit,"a")
+
+str_detect(fruit,"^a") #whether starts with certain pattern - "a"
+
+str_detect(fruit,"a$") #whether ends with certain pattern-"a"
+
+str_detect(fruit,"[aeiou]") #check whether it has a or e or i or o or u
+
+str_detect(fruit,"[a-d]") 
+
+str_detect(fruit,"[0-9]")
+
+str_detect(fruit, "^a[a-z]*e$") #* set the length to be unlimited, but middle can only be characters 
+str_detect(fruit,"^a.e$")  #. mean could be any character or number
+
+#4.
+
+phone=c("213 740 4826","213-740-4826","(213) 740 4826")
+str_detect(phone,"[0-9]{3} [0-9]{3} [0-9]{4}") #{3} means repeat three times
+str_detect(phone,"[0-9]{3}[- ][0-9]{3}[- ][0-9]{4}") #the middle can either be space or dash
+str_detect(phone,"[(]?[0-9]{3}[)]?[- ][0-9]{3}[- ][0-9]{4}") #[(]? means ( can be there or not
+
+#5.
+str_extract_all(bodies,"[(]?[0-9]{3}[)]?[- ][0-9]{3}[- ][0-9]{4}")  #extract phone numbers from all emails
